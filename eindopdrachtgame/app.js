@@ -1,27 +1,13 @@
+let canvas = document.getElementById("canvasID");
+let g = canvas.getContext("2d");
+
 class App
 {
+
     runApplication()
-    {
-        
-        let canvas = document.getElementById("canvasID");
-        let g = canvas.getContext("2d");
-        
-
-        // g.beginPath()
-        // g.fillStyle = "green";
-        // let x =50
-        // let y =0
-        // g.moveTo(x,y); 
-        // g.lineTo(x+50,y+50); 
-        // g.lineTo(x-50,y+50);  
-        // g.closePath();
-        // g.stroke();
-        // g.fill();
-
-
-
+    {   
         g.beginPath()//achterground
-        g.fillStyle = "green";
+        g.fillStyle = "#268017";
         g.moveTo(1600,0); 
         g.lineTo(1600,900); 
         g.lineTo(0,900); 
@@ -32,7 +18,7 @@ class App
 
         
         g.beginPath()//straat
-        g.fillStyle = "black";
+        g.fillStyle = "#4E4E4E";
         g.moveTo(0,500); 
         g.lineTo(1600,500); 
         g.lineTo(1600,400);
@@ -41,32 +27,64 @@ class App
         g.stroke();
         g.fill();
 
-        g.beginPath()//line
+        g.font = "40px Sans-Serif"
+        g.fillStyle = "#FFFB00"
+        g.fillText("Happy birthday", 650, 100);;
+        g.closePath();
+
+    }
+    runLijn(x,y)
+    {
+        g.beginPath()
         g.fillStyle = "white";
-        g.lineTo(0,445);
-        g.lineTo(40,445);
-        g.lineTo(40,455);
-        g.lineTo(0,455);
+        g.lineTo(x + 0,y + 445);
+        g.lineTo(x + 40,y + 445);
+        g.lineTo(x + 40,y + 455);
+        g.lineTo(x + 0,y + 455);
         g.closePath();
         g.stroke();
         g.fill();
-    
+    }
+
+    runboom(x,y)
+    {
+        g.beginPath()
+        g.fillStyle = "#0B5921";
+        g.arc(x,y,45,0,2 * Math.PI, false);
+        g.stroke();
+        g.closePath();
+        g.fill();
+
+        g.beginPath();
+        g.fillStyle= "brown";
+        g.moveTo(x + 0,y + 100); 
+        g.lineTo(x + 10,y + 100);
+        g.lineTo(x + 10,y + 45);
+        g.lineTo(x + 0,y + 45);
+        g.closePath();
+        g.stroke();
+        g.fill();
+ 
+    }
+
+    runHuis(x,y)
+    {
         g.beginPath()//huis
         g.fillStyle = "black";
-        g.moveTo(75,25); 
-        g.lineTo(175,50); 
-        g.lineTo(150,100); 
-        g.lineTo(50,75); 
-        g.lineTo(75,25); 
+        g.moveTo(x + 75,y + 25); 
+        g.lineTo(x + 175,y + 50); 
+        g.lineTo(x + 150,y + 100); 
+        g.lineTo(x + 50,y + 75); 
+        g.lineTo(x + 75,y + 25); 
         g.closePath();
         g.stroke();
         g.fill();
 
         g.beginPath()
         g.fillStyle = "black";
-        g.moveTo(175,50); 
-        g.lineTo(215,75); 
-        g.lineTo(150,100); 
+        g.moveTo(x + 175,y + 50); 
+        g.lineTo(x + 215,y + 75); 
+        g.lineTo(x + 150,y + 100); 
         g.closePath();
         g.stroke();
         g.fill();
@@ -74,32 +92,32 @@ class App
 
         g.beginPath()
         g.fillStyle = "black";
-        g.moveTo(50,75);
-        g.lineTo(50,150);
-        g.lineTo(150,175);
-        g.lineTo(150,100);
-        g.lineTo(50,75);
+        g.moveTo(x + 50,y + 75);
+        g.lineTo(x + 50,y + 150);
+        g.lineTo(x + 150,y + 175);
+        g.lineTo(x + 150,y + 100);
+        g.lineTo(x + 50,y + 75);
         g.closePath();
         g.stroke();
         g.fill();
 
         g.beginPath()
         g.fillStyle = "black";
-        g.moveTo(150,100);
-        g.lineTo(150,175);
-        g.lineTo(215,150);
-        g.lineTo(215,75);
+        g.moveTo(x + 150,y + 100);
+        g.lineTo(x + 150,y + 175);
+        g.lineTo(x + 215,y + 150);
+        g.lineTo(x + 215,y + 75);
         g.closePath();
         g.stroke();
         g.fill();
 
         g.beginPath()
         g.fillStyle = "red";
-        g.moveTo(165,140);
-        g.lineTo(165,170);
-        g.lineTo(175,165);
-        g.lineTo(175,135);
-        g.lineTo(165,140);
+        g.moveTo(x + 165,y + 140);
+        g.lineTo(x + 165,y + 170);
+        g.lineTo(x + 175,y + 165);
+        g.lineTo(x + 175,y + 135);
+        g.lineTo(x + 165,y + 140);
         g.closePath();
         g.stroke();
         g.fill();
@@ -107,20 +125,47 @@ class App
 
         g.beginPath()
         g.fillStyle = "yellow";
-        g.moveTo(65,115);
-        g.lineTo(100,120);
-        g.lineTo(100,140);    
-        g.lineTo(65,130)
+        g.moveTo(x + 65,y + 115);
+        g.lineTo(x + 100,y + 120);
+        g.lineTo(x + 100,y + 140);    
+        g.lineTo(x + 65,y + 130)
         g.closePath();
         g.stroke();
         g.fill();
         console.log(canvas)
-        
+    }
 
-
-        g.font = "40px Sans-Serif"
-
-        g.fillText("Merry Christmas", 650, 100)
+    AddMoreStuff()
+    {
+        this.runHuis(200,600)
+        this.runHuis(950,150)
+        this.runHuis(990,520)
+        this.runHuis(320,200)
+        this.runHuis(610,200)
+        this.runHuis(1000,0)
+        this.runHuis(1300,150)
+        this.runHuis(600,500)
+        this.runLijn(100,0)
+        this.runLijn(200,0)
+        this.runLijn(300,0)
+        this.runLijn(400,0)
+        this.runLijn(500,0)
+        this.runLijn(600,0)
+        this.runLijn(700,0)
+        this.runLijn(800,0)
+        this.runLijn(900,0)
+        this.runLijn(1000,0)
+        this.runLijn(1100,0)
+        this.runLijn(1200,0)
+        this.runLijn(1300,0)
+        this.runLijn(1400,0)
+        this.runLijn(1500,0)
+        this.runboom(230,660)
+        this.runboom(600,660)
+        this.runboom(200,260)
+        this.runboom(1000,100)
+        this.runboom(1410,55)
+        this.runboom(1400,504)
 
     }
 }
@@ -128,4 +173,7 @@ class App
 
 let app = new App();
 app.runApplication();
-
+app.runHuis(20,20);
+app.AddMoreStuff();
+app.runLijn(0,0);
+app.runboom(410,55);
